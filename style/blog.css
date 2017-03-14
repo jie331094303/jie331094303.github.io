@@ -1,0 +1,161 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	overflow-x: hidden;
+	background-color: #eee;
+}
+.box {
+	position: relative;
+}
+.head{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top:130px;
+}
+.head h1{
+	font-weight: bold;
+	color: #fefefe;
+}
+.nav {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top:200px;
+}
+.nav a {
+	font-size: 18px;
+	text-decoration: none;
+	color: #fefefe;
+	padding: 5px;
+	margin-left: 20px;
+	font-weight: bold;
+	text-shadow: 0 0 1px;
+}
+.nav a:hover {
+	text-decoration: underline;
+}
+#pic {
+	height: 390px;
+}
+/*作品展示*/
+.content {
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	border: 2px solid gray;
+}
+.content h1 {
+	border-bottom-color: gray;
+	border-top: 1px gray;
+	padding: 10px;
+	margin-top: 120px;
+	text-align: center;
+}
+/*轮播图*/
+#ps-box{
+	position: relative;
+	width: 620px;
+	height: 300px;
+	border: 1px solid gray;
+	overflow:hidden;
+	margin-left: 50px;
+	margin-top: 40px;
+}
+#list{
+	width:3100px;
+	z-index: 1;
+	position: absolute;
+}
+#list img{
+	float:left;
+	width: 620px;
+	height: 300px;
+} 
+#buttons {
+	width: 170px;
+	height: 20px;
+	z-index: 2;
+	position: absolute;
+	bottom: 8px;
+	right: -50px;
+}
+#buttons span{
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+	float: left;
+	background-color: gray;
+	border-radius: 50%;
+	margin-left: 17px;
+	opacity: 0.7;
+}
+#buttons .on{
+	background-color: white;
+	border: 0.1px solid gray;
+}
+.arrow {
+	cursor: pointer;
+	text-decoration:none;
+/*		background-color: #CBC3C3;*/
+	display: block;
+	width: 28px;
+	height:35px;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	z-index: 2;
+	background-color: RGBA(0,0,0,.3);
+	text-align: center;
+	position: absolute;
+	top: 140px;
+	/*display: none;*/
+}
+.arrow:hover{
+	background-color: RGBA(0,0,0,.7);
+}
+#prev{
+	left: 0px;
+	display: none;
+}
+#next{
+	right: 0px;
+	display: none;
+}
+#ps-describe {
+	font-size: 18px;
+	font-weight: bold;
+	position: absolute;
+	top: 530px;
+	left: 263px; 
+}
+/*日历*/
+.date-box {
+	position: absolute;
+	top: 220px;
+	left: 730px;
+}
+.date-head {
+	text-align: center;
+}
+.date-head a{
+	cursor:pointer;
+	font-weight: bold;
+}
+#show td{
+	padding: 12px;
+	font-weight: bold;
+}
+#show-date {
+	font-weight: bold;
+}
+.today{
+	color: red;
+}
+.date-box p {
+	font-size: 2em;
+	text-align: center;
+	font-weight: bold;
+}

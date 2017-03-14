@@ -1,0 +1,57 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	overflow: hidden;
+}
+.box {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+.head {
+	z-index: 2;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	color: #fefefe;
+}
+.head h1 {
+	font-weight: bold;
+	margin-top: 10%;
+	margin-bottom: 30px;
+}
+.head p {
+	z-index: 2;
+	text-shadow: 0  0 1px;
+}
+.buttons {
+	position: absolute;
+	z-index: 2;
+	text-align: center;
+	margin-top: 23%;
+	width: 100%;
+	text-align: center;
+}
+.buttons a {
+	cursor: pointer;
+	text-decoration:none;
+	color: #fefefe;
+	font-size: 18px;
+	padding: 10px;
+	margin-left: 20px;
+	background-color: RGBA(0,0,0,.3);
+	font-weight: bold;
+}
+.buttons a:hover {
+	background-color: RGBA(0,0,0,.7);
+}
+#bg{
+	position: absolute;
+}
+#bg img {
+/*	width:1366px;*/
+	top: 0px;
+	left: 0px;
+}
