@@ -6,7 +6,7 @@ window.onload = function() {
 	}
 	var number = getRandomNumber();
 	console.log(number);
-	background.innerHTML = "<img src='images./" + number + ".jpg'" + "id='pic'>";
+	background.innerHTML = "<img src='images/" + number + ".jpg'" + "id='pic'>";
 	function autoPic() {
 		var pic = document.getElementById('pic');
 		bodyW= document.documentElement.clientWidth || document.body.clientWidth;
