@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>猜拳游戏</title>
+</head>
+<style type="text/css">
+	*{
+		border: 0px;
+		margin:0px;
+	}
+	body{
+		overflow-x: hidden;
+	}
+	#box{
+		position: relative;
+		top:40%;
+		left: 40%;
+		
+	}
+	h1{
+		margin-top: 50px;
+		text-align: center;
+	}
+	#name{
+		text-align: center;
+		margin-top: 100px;
+	}
+	#name .call{
+/*		font-family: '黑体'；*/
+		font-size: 20px;
+/*		font-family: '宋体'；*/
+		font-weight: bold;
+	}
+/*	#usern{
+		margin-left: -10px;
+	}*/
+	#computern{
+		margin-left: 120px;
+	}
+	#user{
+		
+	}
+	#computer{
+		margin-left: 85px;
+	}
+	#choose button{
+		cursor: pointer;
+	}
+	#button{
+		position: absolute;
+		margin-top: 10px;
+		margin-left: 115px;
+	}
+	#btn{
+		cursor:pointer;
+		font-weight:bold;
+		padding: 5px;
+		color:white;
+		background-color: #38f;
+	}
+	#showWin{
+		position: absolute;
+		margin-top: 42px;
+		color: red;
+	}
+	
+</style>
+<body>
+	<h1>猜拳游戏</h1>
+	<div id="name">
+		<span id="usern" class="call">用户</span>
+		<span id="computern" class="call">电脑</span>
+	</div>
+	<div id="box">
+		<div id="user" style="display: inline;"><img src="images/jiand.jpg" /></div>
+		<div id="computer" style="display: inline;"><img src="images/jiand.jpg" /></div>
+		<div id="choose">
+			<button>剪刀</button>
+			<button>石头</button>
+			<button>布</button>
+	    </div>
+	    <div id="button"><button id="btn">开始</button></div>
+	    <div id="showWin"></div>
+	</div>
+
+</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var user = document.getElementById('user');
+			var comp = document.getElementById('computer');
+			var btn = document.getElementById('btn');
+			var buttons = document.getElementById('choose').getElementsByTagName('button');
+			var showWin = document.getElementById('showWin');
+			var timer = null;
+			var timer1 = null;
+			var show = false;
+			var number = 1;
+			var number1 = 0;
+
+			//用户也一起随机
+			// function time(idname){
+			// 	if(timer === null){
+			// 		timer= setInterval(function(){
+			// 		    number = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+			// 			if(number === 1){
+			// 				idname.innerHTML = "<img src='images/jiand.jpg'>" ;
+			// 			}						
+			// 			if(number === 2){
+			// 				idname.innerHTML = "<img src='images/shit.jpg'>";
+			// 			}						
+			// 			if(number === 3){
+			// 				idname.innerHTML = "<img src='images/bu.jpg'>";
+			// 			}
+			// 		},40);
+			// 	}else{
+			// 		clearInterval(timer);
+			// 		timer = null;
+			// 	}
+			// }	
+			
+			function time1(idname){
+				if(timer1 === null){
+					timer1= setInterval(function(){
+					 number1 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+				    	if(number1 === 1){
+				    		idname.innerHTML =  "<img src='images/jiand.jpg'>";
+				    	}						
+				    	if(number1 === 2){
+				    		idname.innerHTML = "<img src='images/shit.jpg'>";
+				    	}						
+				    	if(number1 === 3){
+				    		idname.innerHTML = "<img src='images/bu.jpg'>";
+				    	}
+					},20);
+				}else{
+					clearInterval(timer1);
+					timer1 = null;
+
+				}
+			}
+
+			function showBtn(){
+				buttons[0].onclick = function(){
+					if(buttons[0].className === 'on'){
+						buttons[0].className = '';
+						return;
+					}
+					user.innerHTML =  "<img src='images/jiand.jpg'>";
+					number = 1;
+					buttons[0].className = 'on';
+					buttons[1].className = '';
+					buttons[2].className = '';
+
+				};
+				buttons[1].onclick = function(){
+					if(buttons[1].className === 'on'){
+						buttons[1].className = '';
+						return;
+					}
+					user.innerHTML =  "<img src='images/shit.jpg'>";
+					number = 2;
+					buttons[1].className = 'on';
+					buttons[0].className = '';
+					buttons[2].className = '';
+					debugger;
+				};
+				buttons[2].onclick = function(){
+					if(buttons[2].className === 'on'){
+						buttons[2].className = '';
+						return;
+					}
+					user.innerHTML =  "<img src='images/bu.jpg'>";
+					number = 3;
+					buttons[2].className = 'on';
+					buttons[0].className = '';
+					buttons[1].className = '';
+					debugger;
+				};
+			}
+			showBtn();
+
+			function win(){
+				if(number === number1){
+					showWin.innerHTML = '平手';
+					showWin.style.marginLeft = 118 + 'px';
+				}else if((number == 1 && number1 == 3) || (number == 2 && number1 == 1) || (number == 3 && number1  == 2)){
+					showWin.innerHTML = '用户赢';
+					showWin.style.marginLeft = 109 + 'px';
+				}else{
+					showWin.innerHTML = '电脑赢';
+					showWin.style.marginLeft = 109 + 'px';
+				}
+			}
+
+			btn.onclick = function(){
+				if(show === false){
+					btn.innerHTML = "暂停";
+					show = true;
+				}else{
+					btn.innerHTML = "开始";
+					show = false;
+					win();
+				}
+				// time(user,timer);
+				time1(comp,timer1);
+			};
+			
+		};
+	</script>
+</html>

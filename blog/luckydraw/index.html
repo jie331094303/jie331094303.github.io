@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖</title>
+</head>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.box{
+		height: 560px;/*560*/
+		width: 560px;
+		border: red 1px solid;
+		margin: 0 auto;
+		margin-top: 50px;
+		position:relative;
+	}
+	.box ul li img{
+		width: 140px;
+		height: 140px;
+	}
+	.box ul li img.start{
+		cursor: pointer;
+		width: 280px;
+		height: 280px;
+		display: block;
+
+	}
+	.box ul{
+		list-style: none;
+	}
+	.box ul li img.row-1{
+		position: absolute;
+		top:0px;
+	}
+	.box ul li img.row-2{
+		position: absolute;
+		top:140px;
+	}
+	.box ul li img.row-3{
+		position:absolute;
+		top:280px;
+	}
+	.box ul li img.row-4{
+		position: absolute;
+		top:420px;
+	}
+	.box ul li img.col-1{
+		position:absolute;
+		left:0px;
+	}
+	.box ul li img.col-2{
+		position:absolute;
+		left:140px;
+	}
+	.box ul li img.col-3{
+		position:absolute;
+		left:280px;
+	}
+	.box ul li img.col-4{
+		position:absolute;
+		right:0px;
+	}
+	.box ul li img.start{
+		position: absolute;
+		top: 140px;
+		left: 140px;
+	}
+	.show{
+		opacity: 1;
+	}
+	.hide{
+		opacity: 0.3;
+	}
+</style>
+<body>
+	<div class="box">
+		<ul id="list">
+			<li><img src="images/1.png" class="row-1 col-1" index="1" alt="1"></li>
+			<li><img src="images/2.png" class="row-1 col-2" index="2" alt="2"></li>
+			<li><img src="images/3.png" class="row-1 col-3" index="3" alt="3"></li>
+			<li><img src="images/4.png" class="row-1 col-4" index="4" alt="4"></li>
+			<li><img src="images/5.png" class="row-2 col-4" index="5" alt="5"></li>
+			<li><img src="images/6.png" class="row-3 col-4" index="6" alt="6"></li>
+			<li><img src="images/7.png" class="row-4 col-4" index="7" alt="7"></li>
+			<li><img src="images/8.png" class="row-4 col-3" index="8" alt="8"></li>
+			<li><img src="images/9.png" class="row-4 col-2" index="9" alt="9"></li>
+			<li><img src="images/10.png" class="row-4 col-1" index="10" alt="10"></li>
+			<li><img src="images/11.png" class="row-3" index="11" alt="11"></li>
+			<li><img src="images/12.png" class="row-2 col-1" index="12" alt="12"></li>
+			<li><img src="images/start.png" index="13" alt="start" class="start" id="btn"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var list = document.getElementById('list').getElementsByTagName('li');
+		var btn = document.getElementById('btn');
+		var index = -1;
+		var timer = null;
+		var a = 0;
+		var isRun = false;
+
+		function run(){
+			list[0].className = 'show';
+			var number = Math.floor(Math.random()*(24 - 13 + 1)) + 13;
+			a = number;
+			// if(timer === null){
+				timer = setInterval(function(){
+				  	if(number > 0){
+				  		number = number - 1;
+				  		console.log(number);
+				  		for(var i = 0; i < list.length-1;i++){
+				  			if(list[i].className === 'show'){
+				  				list[i].className = 'hide';
+				  			}
+				  		}
+				  		if(index === 11){
+				  			index = -1;
+				  		}
+				  		index = index + 1;
+				  		if(!list.length-1){
+				  			list[index].className = 'show';
+				  		}
+				  	}else{
+				  		suggest();
+				  		clearInterval(timer);
+				  	}
+				 },500);
+			 // }else{
+			 //  	clearInterval(timer);
+			 //  	timer = null;
+			 // }
+		}
+		function suggest(){
+			alert("恭喜你中了" + a +"号奖品");
+		}
+
+		function start(){
+			for(var j = 0; j < list.length - 1;j++){
+					list[j].className = 'hide';
+			}
+		}
+
+		btn.onclick = function(){
+			if(isRun === false){
+				  start();
+				  run();
+				  // setTimeout(suggest,15000);
+				  isRun = true;
+			}else{
+				for(var z = 0; z < list.length - 1; z++){
+					list[z].className = "show";
+				}
+				clearInterval(timer);
+				// timer = null;
+				index = -1;
+				isRun = false;
+			}
+
+		};
+	</script>
+</body>
+</html>

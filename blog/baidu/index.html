@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度主页</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li class="fontweight"><a href="#">糯米</a></li>
+			<li class="fontweight"><a href="#">新闻</a></li>
+			<li class="fontweight"><a href="#">hao123</a></li>
+			<li class="fontweight"><a href="#">地图</a></li>
+			<li class="fontweight"><a href="#">视频</a></li>
+			<li class="fontweight"><a href="#">贴吧</a></li>
+			<li><a href="javascript:showDialog()">登陆</a></li>
+			<li><a href="#">设置</a></li>
+			<li><a href=#" class="fontweight" id="btn">更多产品</a></li>
+		</ul>
+	</div>
+	<div class="logo">
+		<img src="images/logo.jpg">
+	</div>
+	<div class="search">
+		<label><input type="text" name=""><button>百度一下</button></label>
+		<img src="images/camera.png">
+	</div>
+	<div class="foot">
+		<img id="erwm" src="images/erwm.png">
+		<div class="footr">
+			<ul>
+				<li><a id="afirst" href="">把百度设置为主页</a></li>
+				<li><a href="">关于百度</a></li>
+				<li><a href="">about baidu</a> </li>
+				<li><a href="">百度推广</a></li>
+			</ul>
+			<br />
+			<p>&copy2016 Baidu <a href="">使用百度前必读 </a><a href="">意见反馈</a>京ICP证030173号<img id="map" src="images/map.png"></p>
+			<p><a href=""><img id="footp" src="images/foot.png"></a><a href="">京公网安备11000002000001号</a></p>
+		</div>
+	</div>
+	<div class="ui-mask" id="mask" onselectstart="return false"></div>
+
+	<div class="ui-dialog" id="dialogMove" onselectstart='return false;'>
+
+		<div class="ui-dialog-title" id="dialogDrag"  onselectstart="return false;" >登录通行证<a class="ui-dialog-closebutton" href="javascript:hideDialog();"></a></div>
+
+		<div class="ui-dialog-content">
+			<div class="ui-dialog-l40 ui-dialog-pt15">
+				<input class="ui-dialog-input ui-dialog-input-username" type="input" placeholder="手机/邮箱/用户名" />
+			</div>
+			<div class="ui-dialog-l40 ui-dialog-pt15">
+				<input class="ui-dialog-input ui-dialog-input-password" type="input" placeholder="密码" />
+			</div>
+			<div class="ui-dialog-l40">
+				<a href="#">忘记密码</a>
+			</div>
+			<div>
+				<a class="ui-dialog-submit" href="#" >登录</a>
+			</div>
+			<div class="ui-dialog-l40">
+				<a href="#">立即注册</a>
+			</div>
+		</div>
+	</div>
+</body>
+ 	<script type="text/javascript">
+		//获取ID
+		function g(id){
+			return document.getElementById(id);
+		}
+
+ 		//自动居中元素
+ 		function autoCenter(el){
+ 			el = el || window.event;
+ 			var elW = el.offsetWidth;
+ 			var elH = el.offsetHeight;
+ 			var bodyW = document.documentElement.clientWidth;
+ 			var bodyH = document.documentElement.clientHeight;
+
+ 			el.style.left = (bodyW - elW)/2 + 'px';
+ 			el.style.top = (bodyH - elH)/2 + 'px';	
+ 		}
+
+ 		function fillToBody(el){
+ 			el.style.width = document.documentElement.clientWidth + 'px';
+ 			el.style.height = document.documentElement.clientHeight + 'px';
+ 		}
+
+ 		var mouseOffsetX = 0;
+ 		var mouseOffsetY = 0;
+ 		var isDrag = false;
+ 		//在标题栏按下，鼠标距离边框相对的X、Y位置距离
+ 		g('dialogDrag').addEventListener('mousedown',function(e){
+ 			e = e || window.event;
+ 			mouseOffsetX = e.pageX - g('dialogMove').offsetLeft;
+ 			mouseOffsetY = e.pageY - g('dialogMove').offsetTop;
+ 			   isDrag = true;
+ 		});
+
+ 		//按下鼠标移动事件
+ 		document.onmousemove = function(e){
+ 			e = e || window.event;
+ 			var mouseX = e.pageX;
+ 			var mouseY = e.pageY;
+ 			var moveX = 0;
+ 			var moveY = 0;
+ 			// moveX > 0 并且 moveX < (页面宽度 - 浮层宽度)
+ 			if(isDrag === true){
+ 				moveX = mouseX - mouseOffsetX; 
+ 				moveY = mouseY - mouseOffsetY;
+ 				var pageWidth = document.documentElement.clientWidth;
+ 				var pageHeight = document.documentElement.clientHeight;
+ 				var dialogMoveW = g('dialogMove').offsetWidth;
+ 				var dialogMoveH = g('dialogMove').offsetHeight;
+ 				var maxX = pageWidth - dialogMoveW;
+ 				var maxY = pageHeight - dialogMoveH;
+ 				moveX = Math.min(Math.max(0,moveX),maxX);
+ 				moveY = Math.min(Math.max(0,moveY),maxY);
+ 				//1.取最大值是当moveX小于零时取0，就是函数的下限；2.去最小值是当Math.max大于maxX时取maxX,也就是函数的上限；
+ 					g('dialogMove').style.left = moveX +'px';
+ 					g('dialogMove').style.top = moveY + 'px';
+ 
+ 			} 
+
+ 		};
+ 		//放开鼠标事件
+ 		document.onmouseup = function(){
+ 			isDrag = false;
+ 		};
+
+ 		function showDialog(){
+ 			g('dialogMove').style.display = 'block';
+ 			autoCenter(g('dialogMove'));
+ 			g('mask').style.display = 'block';
+ 			fillToBody(g('mask'));
+ 		}
+
+ 		function hideDialog(){
+ 			g('dialogMove').style.display = 'none';
+ 			g('mask').style.display = "none";
+ 		}
+
+ 		window.onresize = function(){
+ 			autoCenter(g('dialogMove'));
+ 			fillToBody(g('mask'));
+ 		};
+
+ 	</script>
+</html>

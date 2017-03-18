@@ -200,4 +200,51 @@ window.onload = function() {
 		dealDate(nowYear, nowMonth);
 		showDate.innerHTML = nowYear + "年" + (nowMonth + 1) + '月';
 	};
+	//显示作品图片
+	function showMeg(index){
+		var Div = document.getElementById('pic'+index);
+		Div.onmouseover = showAtop;
+		Div.onmouseout = hideAtop;
+		var divHeight = 411;  //字体离上端的最初位置
+		var timerup = null;   //初始向上的定时器
+		var timerdown = null; //初始向下的定时器
+		var on = null;        //初始鼠标的初始位置	
+
+		function showAtop(){
+			  on = true; 		//鼠标在图片上
+			timerup = setInterval(function (){
+				if(divHeight > 330 && divHeight <= 411){
+					divHeight = divHeight - 1;	//每次向上移动的像素
+					Div.getElementsByTagName('a')[0].style.top = divHeight + 'px';
+					}   //字体每次向上移动的距离
+					// if(divHeight === 0){	//到达顶点清除定时器可以不用写，因为我已经定义了在什么范围内才移动
+					// 	clearInterval(timerup);
+					// }
+					// console.log(on);
+			},1);
+		   		if(on === true){  			
+		   			clearInterval(timerdown); //如果鼠标在图片上清除向下的定时器，只执行向上的定时器
+		   		}
+			}
+		function hideAtop(){
+			   			on = false;   //鼠标移出图片
+			timerdown = setInterval(function (){
+					if(divHeight >= 330 && divHeight < 411){
+					divHeight = divHeight + 1;  //每次向下移动一个像素
+					Div.getElementsByTagName('a')[0].style.top = divHeight + 'px';
+					}
+					
+		    	},1);
+
+		    	if(on === false){	
+					clearInterval(timerup);	//如果鼠标不在图片上清除向上的定时器，只执行向下的定时器
+				}
+			}
+		}
+		function showPic() {
+			for(var i = 1; i < 5; i++) {
+				showMeg(i);
+			}
+		}
+		showPic();
 };

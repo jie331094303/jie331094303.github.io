@@ -45,7 +45,7 @@ body {
 	position: relative;
 	width: 80%;
 	margin: 0 auto;
-	border: 2px solid gray;
+	/*border: 2px solid gray;*/
 }
 .content h1 {
 	border-bottom-color: gray;
@@ -128,13 +128,13 @@ body {
 	font-size: 18px;
 	font-weight: bold;
 	position: absolute;
-	top: 530px;
+	top: 410px;
 	left: 263px; 
 }
 /*日历*/
 .date-box {
 	position: absolute;
-	top: 220px;
+	top: 110px;
 	left: 730px;
 }
 .date-head {
@@ -158,4 +158,39 @@ body {
 	font-size: 2em;
 	text-align: center;
 	font-weight: bold;
+}
+/*照片展示作品*/
+.showPic {
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+.pic {
+	width: 450px;
+	height: 450px;
+	float: left;
+	margin-left: 65px;
+	margin-top: 65px;
+	overflow: hidden;
+	position: relative;
+}
+.pic img, .pic a {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.pic img {
+	width: 450px;
+	height: 450px;
+}
+.pic a {
+	display: block;
+	width: 420px;
+	height: 420px;
+	background:#000;
+	opacity: 0.8;
+	text-decoration: none;
+	color: white;
+	top:411px;
+	padding: 10px 20px 20px 10px;
+	line-height: 25px;
 }
