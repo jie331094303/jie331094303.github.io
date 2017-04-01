@@ -247,4 +247,35 @@ window.onload = function() {
 			}
 		}
 		showPic();
+		//返回顶部
+		var backImg = document.getElementById('backTop').getElementsByTagName('img')[0];
+		var clientH = document.documentElement.clientHeight || document.body.clientHeight; 
+		var backTimer = null;
+		window.onscroll = function() {
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			if (scrollTop >= clientH) {
+				backImg.style.display = "block";
+			} else {
+				backImg.style.display = "none";
+			}
+		};
+
+		backImg.onclick = function() {
+			backTimer = setInterval(function() {
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var speed = Math.ceil(scrollTop/10);
+				if(scrollTop > 0) {
+					document.getElementById.scrollTop = document.body.scrollTop = scrollTop - speed;
+				}else {
+					clearInterval(backTimer);
+				}
+				//方法二
+				// var speed = Math.floor(scrollTop / 10);
+				// document.getElementById.scrollTop = document.body.scrollTop = scrollTop - speed;
+				// if(scrollTop === 9){ 最后srollTop 一定停在 9
+				// 	document.getElementById.scrollTop = document.body.scrollTop = 0;
+				// 	clearInterval(backTimer);
+				// }
+			},10);
+ 		};
 };
