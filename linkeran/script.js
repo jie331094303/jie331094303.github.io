@@ -4,7 +4,7 @@ window.onload = function(){
 	var dataInt = {"data":
 				  [{"src": "31.jpg"},{"src": "32.jpg"},{"src": "33.jpg"},{"src": "34.jpg"},{"src": "37.jpg"},{"src": "38.jpg"},{"src": "39.jpg"},{"src": "40.jpg"},
 				  {"src": "41.jpg"},{"src": "42.jpg"},{"src": "43.jpg"},{"src": "44.jpg"},{"src": "45.jpg"},{"src": "46.jpg"},{"src": "47.jpg"},{"src": "48.jpg"},{"src": "49.jpg"},{"src": "50.jpg"},
-				  {"src": "51.jpg"},{"src": "52.jpg"},{"src": "53.jpg"},{"src": "54.jpg"},{"src": "55.jpg"},{"src": "56.jpg"},{"src": "57.jpg"},{"src": "58.jpg"},{"src": "59.jpg"},{"src": "60.jpg"},
+				  {"src": "51.jpg"},{"src": "52.jpg"},{"src": "53.jpg"},{"src": "56.jpg"},{"src": "57.jpg"},{"src": "58.jpg"},{"src": "59.jpg"},{"src": "60.jpg"},
 				  {"src": "61.jpg"},{"src": "62.jpg"},{"src": "63.jpg"},{"src": "64.jpg"},{"src": "65.jpg"},{"src": "66.jpg"},{"src": "67.jpg"},{"src": "68.jpg"},{"src": "69.jpg"},{"src": "70.jpg"},
 				  {"src": "71.jpg"},{"src": "72.jpg"},{"src": "73.jpg"},{"src": "74.jpg"},{"src": "75.jpg"},{"src": "76.jpg"},{"src": "77.jpg"},{"src": "78.jpg"},{"src": "79.jpg"},{"src": "80.jpg"}
 				  ]};
